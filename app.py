@@ -111,13 +111,7 @@ def handle_text_message(event):
             title='Who is Yi-Han Chen?',
             text='Student from NTUST, Taiwan . Familiar with Python and Java',
             actions=[
-                URITemplateAction(
-                    label='Go to line.me', uri='https://line.me'),
-                PostbackTemplateAction(label='ping', data='ping'),
-                PostbackTemplateAction(
-                    label='ping with text', data='ping',
-                    text='ping'),
-
+                URITemplateAction(label='Go to line.me', uri='https://line.me'),
                 MessageTemplateAction(label='What is my side project recently?', text='side project'),
                 URITemplateAction(
                     label='My Linkedin',
@@ -131,7 +125,9 @@ def handle_text_message(event):
 
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
-            title='My buttons sample', text='Hello, my buttons', actions=[
+            title='My buttons sample', 
+            text='Hello, my buttons', 
+            actions=[
                 URITemplateAction(
                     label='Go to line.me', uri='https://line.me'),
                 PostbackTemplateAction(label='ping', data='ping'),
@@ -156,7 +152,7 @@ def handle_text_message(event):
                 URITemplateAction(
                     label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx/fullscreen'),
                 MessageTemplateAction(label='Function in this web?', text='Vote, Random Drink Picker')
-            ])
+            ]),
             # CarouselColumn(text='hoge2', title='fuga2', actions=[
             #     PostbackTemplateAction(
             #         label='ping with text', data='ping',
@@ -164,6 +160,7 @@ def handle_text_message(event):
             #     MessageTemplateAction(label='Translate Rice', text='米')
             # ]),
         ])
+
         template_message = TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
