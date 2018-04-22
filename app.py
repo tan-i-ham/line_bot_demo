@@ -51,30 +51,31 @@ def handle_message(event):
     #     event.reply_token,
     #     message)
     k = event.message.text
-    message = TemplateSendMessage(
-        alt_text='Buttons template',
-        template=ButtonsTemplate(
-            thumbnail_image_url='https://example.com/image.jpg',
-            title='Who is Yi-Han Chen?',
-            text='Student from NTUST, Taiwan . Familiar with Python and Java',
-            actions=[
-                PostbackTemplateAction(
-                    label='postback',
-                    text="you just sned "+k,
-                    data='action=buy&itemid=1'
-                ),
-                MessageTemplateAction(
-                    label='What is my side project recently?',
-                    text='side project'
-                ),
-                URITemplateAction(
-                    label='My Linkedin',
-                    uri='https://www.linkedin.com/in/hannah-chen-326918101/'
-                )
-            ]
+    if k ='test':
+        message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://example.com/image.jpg',
+                title='Who is Yi-Han Chen?',
+                text='Student from NTUST, Taiwan . Familiar with Python and Java',
+                actions=[
+                    PostbackTemplateAction(
+                        label='postback',
+                        text="you just sned ",
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='What is my side project recently?',
+                        text='side project'
+                    ),
+                    URITemplateAction(
+                        label='My Linkedin',
+                        uri='https://www.linkedin.com/in/hannah-chen-326918101/'
+                    )
+                ]
+            )
         )
-    )
-    line_bot_api.reply_message(event.reply_token, message)
+        line_bot_api.reply_message(event.reply_token, message)
 
 
 
