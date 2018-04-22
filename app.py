@@ -94,7 +94,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             message)
-    elif text == 'buttons':
+    elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
             title='My buttons sample', text='Hello, my buttons', actions=[
                 URITemplateAction(
