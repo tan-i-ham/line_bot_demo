@@ -103,7 +103,7 @@ def handle_text_message(event):
                 actions=[
                     PostbackTemplateAction(
                         label='postback',
-                        text="you just sned "+k,
+                        text="hi i'm hannah",
                         data='action=buy&itemid=1'
                     ),
                     MessageTemplateAction(
