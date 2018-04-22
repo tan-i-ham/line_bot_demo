@@ -125,16 +125,17 @@ def handle_text_message(event):
 
     elif user_text == 'carousel':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='4/18 event idea', title='MSP', actions=[
+            CarouselColumn(text='4/18 event', title='MSP', actions=[
                 URITemplateAction(
-                    label='Github links', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
-                MessageTemplateAction(label='Scraper', text=''),
-                MessageTemplateAction(label='people attended?', text='25')
+                    label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
+                MessageTemplateAction(label='Scraper', text='udn news'),
+                MessageTemplateAction(label='people?', text='25')
             ]),
-            CarouselColumn(text='Brand promote', title='Django Project - Drinkbar', actions=[
+            CarouselColumn(text='Brand promote', title='Drinkbar', actions=[
                 URITemplateAction(
                     label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx/fullscreen'),
-                MessageTemplateAction(label='Function?', text='Vote,Drink Picker')
+                MessageTemplateAction(label='Function 1', text='Vote'),
+                MessageTemplateAction(label='Function 2', text='Drink Picker')                
             ]),
             # CarouselColumn(text='hoge2', title='fuga2', actions=[
             #     PostbackTemplateAction(
