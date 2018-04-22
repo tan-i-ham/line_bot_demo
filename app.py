@@ -51,7 +51,7 @@ def handle_message(event):
     #     event.reply_token,
     #     message)
     k = event.message.text
-    if k ='test':
+    if k =='test':
         message = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
