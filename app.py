@@ -112,11 +112,11 @@ def handle_text_message(event):
             text='Student from NTUST, Taiwan . Familiar with Python and Java',
             actions=[
                 URITemplateAction(label='Go to line.me', uri='https://line.me'),
-                MessageTemplateAction(label='What is my side project recently?', text='side project'),
-                URITemplateAction(
-                    label='My Linkedin',
-                    uri='https://www.linkedin.com/in/hannah-chen-326918101/'
-                )
+                MessageTemplateAction(label='What is my side project recently?', text='side project')
+                # URITemplateAction(
+                #     label='My Linkedin',
+                #     uri='https://www.linkedin.com/in/hannah-chen-326918101/'
+                # )
             ])
         template_message = TemplateSendMessage(
             alt_text='HI!!!', template=buttons_template)
@@ -148,7 +148,7 @@ def handle_text_message(event):
                 MessageTemplateAction(label='What is this special?', text='scrape the data from news website, and pass the voice(top 5 news) to user'),
                 MessageTemplateAction(label='How many people attended that event?', text='25')
             ]),
-            CarouselColumn(text='Project made in Web Develpoment class', title='My First Django Project - Drinkbar', actions=[
+            CarouselColumn(text='Project made in Web Develpoment class', title='Django Project - Drinkbar', actions=[
                 URITemplateAction(
                     label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx/fullscreen'),
                 MessageTemplateAction(label='Function in this web?', text='Vote, Random Drink Picker')
@@ -169,6 +169,15 @@ def handle_text_message(event):
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text))
 
+
+@handler.add(MessageEvent, message=StickerMessage)
+def handle_sticker_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        StickerSendMessage(
+            package_id=event.message.package_id,
+            sticker_id=event.message.sticker_id)
+    )
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
