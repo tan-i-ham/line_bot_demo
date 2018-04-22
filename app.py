@@ -106,25 +106,28 @@ def handle_text_message(event):
                 TextMessage(text="Bot can't use profile API without user ID"))
 
     elif user_text == 'template':
-        message = TemplateSendMessage(
-            alt_text='Buttons template',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://example.com/image.jpg',
-                title='Who is Yi-Han Chen?',
-                text='Student from NTUST, Taiwan . Familiar with Python and Java',
-                actions=[
-                    MessageTemplateAction(
-                        label='What is my side project recently?',
-                        text='side project'
-                    ),
-                    URITemplateAction(
-                        label='My Linkedin',
-                        uri='https://www.linkedin.com/in/hannah-chen-326918101/'
-                    )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, message)
+        buttons_template = ButtonsTemplate(
+            thumbnail_image_url='https://example.com/image.jpg',
+            title='Who is Yi-Han Chen?',
+            text='Student from NTUST, Taiwan . Familiar with Python and Java',
+            actions=[
+                URITemplateAction(
+                    label='Go to line.me', uri='https://line.me'),
+                PostbackTemplateAction(label='ping', data='ping'),
+                PostbackTemplateAction(
+                    label='ping with text', data='ping',
+                    text='ping'),
+
+                MessageTemplateAction(label='What is my side project recently?', text='side project'),
+                URITemplateAction(
+                    label='My Linkedin',
+                    uri='https://www.linkedin.com/in/hannah-chen-326918101/'
+                )
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='HI!!!', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+        
 
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
@@ -140,19 +143,26 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+
     elif user_text == 'carousel':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='hoge1', title='fuga1', actions=[
+            CarouselColumn(text='4/18 event idea', title='Scraper X Bing Speech API', actions=[
                 URITemplateAction(
-                    label='Go to line.me', uri='https://line.me'),
-                PostbackTemplateAction(label='ping', data='ping')
+                    label='Github links', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
+                MessageTemplateAction(label='What is this special?', text='scrape the data from news website, and pass the voice(top 5 news) to user'),
+                MessageTemplateAction(label='How many people attended that event?', text='25')
             ]),
-            CarouselColumn(text='hoge2', title='fuga2', actions=[
-                PostbackTemplateAction(
-                    label='ping with text', data='ping',
-                    text='ping'),
-                MessageTemplateAction(label='Translate Rice', text='米')
-            ]),
+            CarouselColumn(text='Project made in Web Develpoment class', title='My First Django Project - Drinkbar', actions=[
+                URITemplateAction(
+                    label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx/fullscreen'),
+                MessageTemplateAction(label='Function in this web?', text='Vote, Random Drink Picker')
+            ])
+            # CarouselColumn(text='hoge2', title='fuga2', actions=[
+            #     PostbackTemplateAction(
+            #         label='ping with text', data='ping',
+            #         text='ping'),
+            #     MessageTemplateAction(label='Translate Rice', text='米')
+            # ]),
         ])
         template_message = TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
@@ -161,18 +171,6 @@ def handle_text_message(event):
     else:
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text))
-# if __name__ == "__main__":
-#     arg_parser = ArgumentParser(
-#         usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
-#     )
-#     arg_parser.add_argument('-p', '--port', type=int, default=5000, help='port')
-#     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-#     options = arg_parser.parse_args()
-
-#     # create tmp dir for download content
-#     # make_static_tmp_dir()
-
-#     app.run(debug=options.debug, port=options.port)
 
 
 if __name__ == "__main__":
