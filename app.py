@@ -108,6 +108,7 @@ def handle_text_message(event):
 
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
+            thumbnailImageUrl='https://drive.google.com/file/d/0B5-xPoQ36Sb7V3czWHF1QUY5UTQ/view?usp=sharing',
             title='Yi-Han Chen', 
             text='Student from NTUST', 
             actions=[
@@ -123,7 +124,7 @@ def handle_text_message(event):
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
-    elif user_text == 'carousel':
+    elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='4/18 event', title='MSP', actions=[
                 URITemplateAction(
@@ -133,7 +134,7 @@ def handle_text_message(event):
             ]),
             CarouselColumn(text='Brand promote', title='Drinkbar', actions=[
                 URITemplateAction(
-                    label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx/fullscreen'),
+                    label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
                 MessageTemplateAction(label='Function 1', text='Vote'),
                 MessageTemplateAction(label='Function 2', text='Drink Picker')                
             ]),
