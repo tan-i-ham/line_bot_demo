@@ -125,16 +125,16 @@ def handle_text_message(event):
 
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
-            title='My buttons sample', 
-            text='Hello, my buttons', 
+            title='Who is Yi-Han Chen?', 
+            text='Student from NTUST, Taiwan', 
             actions=[
                 URITemplateAction(
-                    label='Go to line.me', uri='https://line.me'),
+                    label='My Linkedin', uri='https://www.linkedin.com/in/hannah-chen-326918101/'),
                 PostbackTemplateAction(label='ping', data='ping'),
                 PostbackTemplateAction(
                     label='ping with text', data='ping',
                     text='ping'),
-                MessageTemplateAction(label='Translate Rice', text='米')
+                MessageTemplateAction(label='side project recently', text='side project')
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
