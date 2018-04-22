@@ -88,12 +88,37 @@ def handle_text_message(event):
     user_text = event.message.text
 
     if user_text == 'profile':
-        # message = TextSendMessage(text=event.message.text)
         message = TextSendMessage(text=user_text)
         
         line_bot_api.reply_message(
             event.reply_token,
             message)
+    elif user_text == 'template':
+        message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://example.com/image.jpg',
+                title='Who is Yi-Han Chen?',
+                text='Student from NTUST, Taiwan . Familiar with Python and Java',
+                actions=[
+                    PostbackTemplateAction(
+                        label='postback',
+                        text="you just sned "+k,
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='What is my side project recently?',
+                        text='side project'
+                    ),
+                    URITemplateAction(
+                        label='My Linkedin',
+                        uri='https://www.linkedin.com/in/hannah-chen-326918101/'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
             title='My buttons sample', text='Hello, my buttons', actions=[
@@ -108,7 +133,27 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif user_text == 'carousel':
+        carousel_template = CarouselTemplate(columns=[
+            CarouselColumn(text='hoge1', title='fuga1', actions=[
+                URITemplateAction(
+                    label='Go to line.me', uri='https://line.me'),
+                PostbackTemplateAction(label='ping', data='ping')
+            ]),
+            CarouselColumn(text='hoge2', title='fuga2', actions=[
+                PostbackTemplateAction(
+                    label='ping with text', data='ping',
+                    text='ping'),
+                MessageTemplateAction(label='Translate Rice', text='米')
+            ]),
+        ])
+        template_message = TemplateSendMessage(
+            alt_text='Carousel alt text', template=carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
 
+    else:
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text=event.message.text))
 # if __name__ == "__main__":
 #     arg_parser = ArgumentParser(
 #         usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
