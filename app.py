@@ -88,11 +88,23 @@ def handle_text_message(event):
     user_text = event.message.text
 
     if user_text == 'profile':
-        message = TextSendMessage(text=user_text)
-        
-        line_bot_api.reply_message(
-            event.reply_token,
-            message)
+        if isinstance(event.source, SourceUser):
+            profile = line_bot_api.get_profile(event.source.user_id)
+            line_bot_api.reply_message(
+                event.reply_token, [
+                    TextSendMessage(
+                        text='Display name: ' + profile.display_name
+                    ),
+                    TextSendMessage(
+                        text='Status message: ' + profile.status_message
+                    )
+                ]
+            )
+        else:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextMessage(text="Bot can't use profile API without user ID"))
+
     elif user_text == 'template':
         message = TemplateSendMessage(
             alt_text='Buttons template',
@@ -101,11 +113,6 @@ def handle_text_message(event):
                 title='Who is Yi-Han Chen?',
                 text='Student from NTUST, Taiwan . Familiar with Python and Java',
                 actions=[
-                    PostbackTemplateAction(
-                        label='postback',
-                        text="hi i'm hannah",
-                        data='action=buy&itemid=1'
-                    ),
                     MessageTemplateAction(
                         label='What is my side project recently?',
                         text='side project'
