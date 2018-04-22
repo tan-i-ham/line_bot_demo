@@ -104,23 +104,6 @@ def handle_text_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextMessage(text="Bot can't use profile API without user ID"))
-
-    elif user_text == 'template':
-        buttons_template = ButtonsTemplate(
-            thumbnail_image_url='https://example.com/image.jpg',
-            title='Who is Yi-Han Chen?',
-            text='Student from NTUST, Taiwan . Familiar with Python and Java',
-            actions=[
-                URITemplateAction(label='Go to line.me', uri='https://line.me'),
-                MessageTemplateAction(label='What is my side project recently?', text='side project')
-                # URITemplateAction(
-                #     label='My Linkedin',
-                #     uri='https://www.linkedin.com/in/hannah-chen-326918101/'
-                # )
-            ])
-        template_message = TemplateSendMessage(
-            alt_text='HI!!!', template=buttons_template)
-        line_bot_api.reply_message(event.reply_token, template_message)
         
 
     elif user_text == 'buttons':
@@ -142,16 +125,16 @@ def handle_text_message(event):
 
     elif user_text == 'carousel':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='4/18 event idea', title='Scraper X Bing Speech API', actions=[
+            CarouselColumn(text='4/18 event idea', title='MSP', actions=[
                 URITemplateAction(
                     label='Github links', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
-                MessageTemplateAction(label='What is this special?', text='scrape the data from news website, and pass the voice(top 5 news) to user'),
-                MessageTemplateAction(label='How many people attended that event?', text='25')
+                MessageTemplateAction(label='Scraper', text=''),
+                MessageTemplateAction(label='people attended?', text='25')
             ]),
-            CarouselColumn(text='Project made in Web Develpoment class', title='Django Project - Drinkbar', actions=[
+            CarouselColumn(text='Brand promote', title='Django Project - Drinkbar', actions=[
                 URITemplateAction(
                     label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx/fullscreen'),
-                MessageTemplateAction(label='Function in this web?', text='Vote, Random Drink Picker')
+                MessageTemplateAction(label='Function?', text='Vote,Drink Picker')
             ]),
             # CarouselColumn(text='hoge2', title='fuga2', actions=[
             #     PostbackTemplateAction(
