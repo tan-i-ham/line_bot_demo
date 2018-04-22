@@ -50,25 +50,26 @@ def handle_message(event):
     # line_bot_api.reply_message(
     #     event.reply_token,
     #     message)
+    k = event.text
     message = TemplateSendMessage(
         alt_text='Buttons template',
         template=ButtonsTemplate(
             thumbnail_image_url='https://example.com/image.jpg',
-            title='Menu by han',
-            text='Please select',
+            title='Who is Yi-Han Chen?'
+            text='Student from NTUST, Taiwan \n familiar with Python and Java',
             actions=[
                 PostbackTemplateAction(
                     label='postback',
-                    text='postback text',
+                    text=k,
                     data='action=buy&itemid=1'
                 ),
                 MessageTemplateAction(
-                    label='message',
-                    text='message text'
+                    label='What is my side project recently?',
+                    text='side project'
                 ),
                 URITemplateAction(
-                    label='uri',
-                    uri='http://example.com/'
+                    label='My Linkedin',
+                    uri='https://www.linkedin.com/in/hannah-chen-326918101/'
                 )
             ]
         )
