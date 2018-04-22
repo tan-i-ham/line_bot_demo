@@ -50,7 +50,7 @@ def handle_message(event):
     # line_bot_api.reply_message(
     #     event.reply_token,
     #     message)
-    k = event.text
+    k = event.message.text
     message = TemplateSendMessage(
         alt_text='Buttons template',
         template=ButtonsTemplate(
@@ -60,7 +60,7 @@ def handle_message(event):
             actions=[
                 PostbackTemplateAction(
                     label='postback',
-                    text=k,
+                    text="you just sned "+k,
                     data='action=buy&itemid=1'
                 ),
                 MessageTemplateAction(
