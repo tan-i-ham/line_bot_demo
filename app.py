@@ -85,15 +85,29 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    text2 = event.message.text
+    user_text = event.message.text
 
-    if text2 == 'profile':
+    if user_text == 'profile':
         # message = TextSendMessage(text=event.message.text)
-        message = TextSendMessage(text=text2)
+        message = TextSendMessage(text=user_text)
         
         line_bot_api.reply_message(
             event.reply_token,
             message)
+    elif text == 'buttons':
+        buttons_template = ButtonsTemplate(
+            title='My buttons sample', text='Hello, my buttons', actions=[
+                URITemplateAction(
+                    label='Go to line.me', uri='https://line.me'),
+                PostbackTemplateAction(label='ping', data='ping'),
+                PostbackTemplateAction(
+                    label='ping with text', data='ping',
+                    text='ping'),
+                MessageTemplateAction(label='Translate Rice', text='米')
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
 
 # if __name__ == "__main__":
 #     arg_parser = ArgumentParser(
