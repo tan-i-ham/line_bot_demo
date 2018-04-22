@@ -56,7 +56,7 @@ def handle_message(event):
         template=ButtonsTemplate(
             thumbnail_image_url='https://example.com/image.jpg',
             title='Who is Yi-Han Chen?'
-            text='Student from NTUST, Taiwan \n familiar with Python and Java',
+            text='Student from NTUST, Taiwan. familiar with Python and Java',
             actions=[
                 PostbackTemplateAction(
                     label='postback',
