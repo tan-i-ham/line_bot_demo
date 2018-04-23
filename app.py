@@ -182,8 +182,8 @@ def handle_sticker_message(event):
             package_id=event.message.package_id,
             sticker_id=event.message.sticker_id)
     )
-    
-@handler.add(FollowEvent, message=TextMessage)
+
+@handler.add(FollowEvent)
 def handle_follow_message(event):
     line_bot_api.reply_message(event.reply_token , TextSendMessage(text='Hello World!'))
 
