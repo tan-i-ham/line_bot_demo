@@ -182,11 +182,26 @@ def handle_sticker_message(event):
             package_id=event.message.package_id,
             sticker_id=event.message.sticker_id)
     )
-
+# greeting text and image
 @handler.add(FollowEvent)
 def handle_follow_message(event):
-    line_bot_api.reply_message(event.reply_token , TextSendMessage(text='Hello World!'))
+    line_bot_api.reply_message(event.reply_token , TextSendMessage(text="Hi! I'm Yi-Han Chen"))
+    pic_url ='https://media.licdn.com/dms/image/C5103AQGFkQP0UXEFLA/profile-displayphoto-shrink_200_200/0?e=1529672400&v=beta&t=_tGqGLrPJ856JRyxZ-f9zhBGny5iWUSIQqxQ5N5hKsQ'
+    image_message = ImageSendMessage(
+        original_content_url= pic_url,
+        preview_image_url= pic_url
+    )
+    line_bot_api.reply_message(event.reply_token,image_message)
+    line_bot_api.reply_message(event.reply_token , TextSendMessage(text="Yes, this is me!"))
 
+    confirm_template = ConfirmTemplate(text='Want to know more about me?', actions=[
+            MessageTemplateAction(label='Yes!', text='About me'),
+            MessageTemplateAction(label='No!', text='No'),
+    ])
+    template_message = TemplateSendMessage(
+        alt_text='Confirm alt text', template=confirm_template)
+    line_bot_api.reply_message(event.reply_token, template_message)
+    
 
 if __name__ == "__main__":
     
