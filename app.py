@@ -24,8 +24,8 @@ from linebot.models import (
     StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
     ImageMessage, VideoMessage, AudioMessage, FileMessage,
     UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent, 
-    RichMenu, RichMenuArea, RichMenuBound
 )
+from linebot.models import (RichMenu, RichMenuArea, RichMenuBound)
 
 app = Flask(__name__)
 
