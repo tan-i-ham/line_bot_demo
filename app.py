@@ -99,10 +99,7 @@ def handle_text_message(event):
             CarouselColumn(
                 thumbnail_image_url='https://imgur.com/a/rTD2tH1',
                 text='@Microsoft', title='MSP', actions=[
-                URITemplateAction(
-                    label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
-                MessageTemplateAction(label='Scraper', text='udn news'),
-                MessageTemplateAction(label='people attend', text='25')
+                MessageTemplateAction(label='Job',text='MSP main job' )
             ]),
             CarouselColumn(
                 text='@CTBC Bank', title='IT Intern', actions=[
@@ -123,7 +120,7 @@ def handle_text_message(event):
                 URITemplateAction(
                     label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
                 MessageTemplateAction(label='Scraper', text='udn news'),
-                MessageTemplateAction(label='people attend', text='25')
+                MessageTemplateAction(label='people', text='25')
             ]),
             CarouselColumn(
                 text='by Django', title='Drinkbar', actions=[
