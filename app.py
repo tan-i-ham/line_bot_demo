@@ -98,8 +98,7 @@ def handle_text_message(event):
     elif user_text== 'experience':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/a/rTD2tH1',
-                text='@Micro', title='MSP', actions=[
+                text='@Microsoft', title='MSP', actions=[
                 MessageTemplateAction(label='Job',text='MSP main job' )
             ]),
             CarouselColumn(
@@ -122,7 +121,7 @@ def handle_text_message(event):
                 MessageTemplateAction(label='Scraper', text='udn news'),
                 MessageTemplateAction(label='people?', text='25')
             ]),
-            CarouselColumn(text='Brand promote', title='Drinkbar', actions=[
+            CarouselColumn(text='by Django', title='Drinkbar', actions=[
                 URITemplateAction(
                     label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
                 MessageTemplateAction(label='Function 1', text='Vote'),
