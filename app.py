@@ -104,9 +104,10 @@ def handle_text_message(event):
                 event.reply_token,
                 TextMessage(text="Bot can't use profile API without user ID"))
     elif user_text == 'pic':
+        pic_url ='https://media.licdn.com/dms/image/C5103AQGFkQP0UXEFLA/profile-displayphoto-shrink_200_200/0?e=1529672400&v=beta&t=_tGqGLrPJ856JRyxZ-f9zhBGny5iWUSIQqxQ5N5hKsQ'
         image_message = ImageSendMessage(
-            original_content_url='https://drive.google.com/file/d/0B5-xPoQ36Sb7V3czWHF1QUY5UTQ/view?usp=sharing',
-            preview_image_url='https://drive.google.com/file/d/0B5-xPoQ36Sb7V3czWHF1QUY5UTQ/view?usp=sharing'
+            original_content_url= pic_url,
+            preview_image_url= pic_url
             )
         line_bot_api.reply_message(event.reply_token,image_message)
                 
