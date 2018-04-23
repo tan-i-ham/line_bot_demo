@@ -104,10 +104,8 @@ def handle_text_message(event):
                 event.reply_token,
                 TextMessage(text="Bot can't use profile API without user ID"))
     elif user_text == 'pic':
-        line_bot_api.reply_message(
-                event.reply_token,
-                ImageMessage(image_url="img/my.jpg")
-
+        line_bot_api.reply_message(event.reply_token,ImageMessage(image_url="img/my.jpg"))
+                
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
             thumbnailImageUrl='img/my.jpg',
