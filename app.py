@@ -111,7 +111,7 @@ def handle_text_message(event):
             )
         line_bot_api.reply_message(event.reply_token,image_message)
                 
-    elif user_text == 'buttons':
+    elif user_text == 'About me':
         buttons_template = ButtonsTemplate(
             thumbnail_image_url='https://via.placeholder.com/1024x1024',
             title='Yi-Han Chen', 
@@ -155,7 +155,7 @@ def handle_text_message(event):
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
-    elif text == 'ic':
+    elif user_text == 'ic':
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
                                 action=DatetimePickerTemplateAction(label='datetime',
@@ -174,21 +174,6 @@ def handle_text_message(event):
             event.reply_token, TextSendMessage(text=user_text))
 
 
-@handler.add(JoinEvent)
-def handle_join(event):
-    image_message = ImageSendMessage(
-            original_content_url= pic_url,
-            preview_image_url= pic_url
-            )
-    line_bot_api.reply_message(event.reply_token,image_message)
-
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text='Joined this ' + event.source.type))
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text='this is me'))
-
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
     line_bot_api.reply_message(
@@ -199,6 +184,7 @@ def handle_sticker_message(event):
     )
 
 if __name__ == "__main__":
+    line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
