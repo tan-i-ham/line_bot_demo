@@ -103,8 +103,11 @@ def handle_text_message(event):
             ]),
             CarouselColumn(
                 text='@CTBC', title='IT Intern', actions=[
-                    MessageTemplateAction(label='Testing'),
-                    MessageTemplateAction(label='Spring')                
+                    PostbackTemplateAction(label='Testing', data='Testing'),
+                    PostbackTemplateAction(label='Spring', data='Spring')
+                    
+                    # MessageTemplateAction(label='Testing'),
+                    # MessageTemplateAction(label='Spring')                
             ])
 
         ])
