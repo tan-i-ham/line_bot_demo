@@ -23,7 +23,7 @@ from linebot.models import (
     CarouselTemplate, CarouselColumn, PostbackEvent,
     StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
     ImageMessage, VideoMessage, AudioMessage, FileMessage,
-    UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent
+    UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent,ImageSendMessage
 )
 
 app = Flask(__name__)
@@ -105,14 +105,14 @@ def handle_text_message(event):
                 TextMessage(text="Bot can't use profile API without user ID"))
     elif user_text == 'pic':
         image_message = ImageSendMessage(
-            original_content_url='http://res.cloudinary.com/demo/image/upload/w_250,h_250,c_fill,f_auto/seagull.jpg',
-            preview_image_url='https://example.com/preview.jpg'
+            original_content_url='https://via.placeholder.com/1024x1024',
+            preview_image_url='http://res.cloudinary.com/demo/image/upload/w_250,h_250,c_fill,f_auto/seagull.jpg'
             )
         line_bot_api.reply_message(event.reply_token,image_message)
                 
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
-            thumbnail_image_url='http://res.cloudinary.com/demo/image/upload/w_250,h_250,c_fill,f_auto/seagull.jpg',
+            thumbnail_image_url='https://via.placeholder.com/1024x1024',
             title='Yi-Han Chen', 
             text='Student from NTUST', 
             actions=[
