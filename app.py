@@ -182,9 +182,14 @@ def handle_sticker_message(event):
             package_id=event.message.package_id,
             sticker_id=event.message.sticker_id)
     )
+    
+@handler.add(FollowEvent, message=TextMessage)
+def handle_follow_message(event):
+    line_bot_api.reply_message(event.reply_token , TextSendMessage(text='Hello World!'))
+
 
 if __name__ == "__main__":
-    line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
+    
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
