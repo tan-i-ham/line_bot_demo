@@ -102,7 +102,7 @@ def handle_text_message(event):
                 MessageTemplateAction(label='Job',text='MSP main job')
                 
             ]),
-            CarouselColumn(text='@CTBC', title='Intern', actions=[
+            CarouselColumn(text='@CTBC', title='IT Intern', actions=[
                     PostbackTemplateAction(label='Testing', data='Testing'),
                     PostbackTemplateAction(label='Spring', data='Spring')
                     
