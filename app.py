@@ -97,18 +97,18 @@ def handle_text_message(event):
 
     elif user_text== 'experience':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(
-                text='@Microsoft', title='MSP', actions=[
-                MessageTemplateAction(label='Job',text='MSP main job' )
+            CarouselColumn(text='@Microsoft', title='MSP', actions=[
+                MessageTemplateAction(label='Job',text='MSP main job'),
+                MessageTemplateAction(label='Job',text='MSP main job')
+                
             ]),
-            CarouselColumn(
-                text='@CTBC', title='IT Intern', actions=[
+            CarouselColumn(text='@CTBC', title='Intern', actions=[
                     PostbackTemplateAction(label='Testing', data='Testing'),
                     PostbackTemplateAction(label='Spring', data='Spring')
                     
                     # MessageTemplateAction(label='Testing'),
                     # MessageTemplateAction(label='Spring')                
-            ])
+            ]),
 
         ])
 
