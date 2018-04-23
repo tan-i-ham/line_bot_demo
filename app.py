@@ -23,9 +23,8 @@ from linebot.models import (
     CarouselTemplate, CarouselColumn, PostbackEvent,
     StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
     ImageMessage, VideoMessage, AudioMessage, FileMessage,
-    UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent, 
+    UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent
 )
-from linebot.models import (RichMenu, RichMenuArea, RichMenuBound)
 
 app = Flask(__name__)
 
@@ -151,32 +150,6 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
 
     else:
-        rich_menu_to_create = RichMenu(
-                            size=RichMenuBound(
-                                width=2500,
-                                height=1686
-                            ),
-                            selected= False,
-                            name="nice richmenu",
-                            chatBarText="touch me",
-                            areas=[
-                                RichMenuArea(
-                                    RichMenuBound(
-                                        x=0,
-                                        y=0,
-                                        width=2500,
-                                        height=1686
-                                    ),
-                                    URITemplateAction(
-                                        uri='line://nv/location'
-                                    )
-                                )
-                            ]
-                        )
-        rich_menu_id = line_bot_api.create_rich_menu(data=rich_menu_to_create)
-        print(rich_menu_id)
-        user_text += str(rich_menu_id)
-        
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=user_text))
 
