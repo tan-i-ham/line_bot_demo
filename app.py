@@ -85,8 +85,32 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    user_text = event.message.text
+    rich_menu_to_create = RichMenu(
+                            size=RichMenuBound(
+                                width=2500,
+                                height=1686
+                            ),
+                            selected= False,
+                            name="nice richmenu",
+                            chatBarText="touch me",
+                            areas=[
+                                RichMenuArea(
+                                    RichMenuBound(
+                                        x=0,
+                                        y=0,
+                                        width=2500,
+                                        height=1686
+                                    ),
+                                    URITemplateAction(
+                                        uri='line://nv/location'
+                                    )
+                                )
+                            ]
+                        )
+    rich_menu_id = line_bot_api.create_rich_menu(data=rich_menu_to_create)
+    print(rich_menu_id)
 
+    user_text = event.message.text
     if user_text == 'profile':
         if isinstance(event.source, SourceUser):
             profile = line_bot_api.get_profile(event.source.user_id)
@@ -151,8 +175,10 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
 
     else:
+        user_text += str(rich_menu_id)
+        
         line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text=event.message.text))
+            event.reply_token, TextSendMessage(text=user_text))
 
 
 @handler.add(MessageEvent, message=StickerMessage)
