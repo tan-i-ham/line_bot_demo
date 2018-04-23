@@ -117,7 +117,6 @@ def handle_text_message(event):
     elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/a/rTD2tH1',
                 text='4/18 event', title='MSP', actions=[
                 URITemplateAction(
                     label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
@@ -131,11 +130,10 @@ def handle_text_message(event):
                 MessageTemplateAction(label='Function 2', text='Drink Picker')                
             ]),
             CarouselColumn(
-                thumbnail_image_url='https://imgur.com/a/sqdZnE6',
                 text='project', title='Fintech', actions=[
                     URITemplateAction(label='Link', uri='https://msp12.herokuapp.com/new/'),
                     MessageTemplateAction(label='Invest')
-            ])
+            ]),
         ])
 
         template_message = TemplateSendMessage(
