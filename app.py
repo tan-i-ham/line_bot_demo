@@ -106,7 +106,7 @@ def handle_text_message(event):
     elif user_text == 'pic':
         image_message = ImageSendMessage(
             original_content_url='https://via.placeholder.com/1024x1024',
-            preview_image_url='http://res.cloudinary.com/demo/image/upload/w_250,h_250,c_fill,f_auto/seagull.jpg'
+            preview_image_url='https://via.placeholder.com/1024x1024'
             )
         line_bot_api.reply_message(event.reply_token,image_message)
                 
