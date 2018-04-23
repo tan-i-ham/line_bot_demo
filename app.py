@@ -88,16 +88,33 @@ def handle_text_message(event):
             actions=[
                 URITemplateAction(
                     label='My Linkedin', uri='https://www.linkedin.com/in/hannah-chen-326918101/'),
-                PostbackTemplateAction(label='ping', data='ping'),
-                PostbackTemplateAction(
-                    label='ping with text', data='ping',
-                    text='ping'),
+                MessageTemplateAction(label='Experience', text='experience')
                 MessageTemplateAction(label='side project', text='side project')
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif user_text== 'experience':
+        carousel_template = CarouselTemplate(columns=[
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/a/rTD2tH1',
+                text='@Microsoft', title='MSP', actions=[
+                URITemplateAction(
+                    label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
+                MessageTemplateAction(label='Scraper', text='udn news'),
+                MessageTemplateAction(label='people attend', text='25')
+            ]),
+            CarouselColumn(
+                text='@CTBC Bank', title='IT Intern', actions=[
+                    MessageTemplateAction(label='Testing'),
+                    MessageTemplateAction(label='Spring')                
+            ]),
 
+        ])
+
+        template_message = TemplateSendMessage(
+            alt_text='experience', template=carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
     elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(
@@ -109,23 +126,21 @@ def handle_text_message(event):
                 MessageTemplateAction(label='people attend', text='25')
             ]),
             CarouselColumn(
-                text='Develop by Django', title='Drinkbar', actions=[
-                URITemplateAction(
-                    label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
+                text='by Django', title='Drinkbar', actions=[
+                URITemplateAction(label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
                 MessageTemplateAction(label='Function 1', text='Vote'),
                 MessageTemplateAction(label='Function 2', text='Drink Picker')                
             ]),
             CarouselColumn(
                 thumbnail_image_url='https://imgur.com/a/sqdZnE6',
-                text='competition project', title='Fintech', actions=[
-                    URITemplateAction(
-                    label='Link', uri='https://msp12.herokuapp.com/new/'),
+                text='project', title='Fintech', actions=[
+                    URITemplateAction(label='Link', uri='https://msp12.herokuapp.com/new/'),
                     MessageTemplateAction(label='Invest')
             ]),
         ])
 
         template_message = TemplateSendMessage(
-            alt_text='Carousel alt text', template=carousel_template)
+            alt_text='side project', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     elif user_text == 'ic':
