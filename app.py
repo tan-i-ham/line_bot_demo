@@ -88,8 +88,8 @@ def handle_text_message(event):
             actions=[
                 URITemplateAction(
                     label='My Linkedin', uri='https://www.linkedin.com/in/hannah-chen-326918101/'),
-                MessageTemplateAction(label='Experience', text='experience')
-                MessageTemplateAction(label='side project', text='side project')
+                MessageTemplateAction(label='Experience', text='experience'),
+                MessageTemplateAction(label='Side Project', text='side project')
             ])
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
