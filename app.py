@@ -187,7 +187,7 @@ def handle_join(event):
         TextSendMessage(text='Joined this ' + event.source.type))
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text='this is me')
+        TextSendMessage(text='this is me'))
 
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
