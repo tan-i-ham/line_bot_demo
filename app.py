@@ -191,7 +191,7 @@ def handle_follow_message(event):
         original_content_url= pic_url,
         preview_image_url= pic_url
     )
-    line_bot_api.reply_message(event.reply_token,image_message)
+    # line_bot_api.reply_message(event.reply_token,image_message)
     line_bot_api.reply_message(event.reply_token , TextSendMessage(text="Yes, this is me!"))
 
     confirm_template = ConfirmTemplate(text='Want to know more about me?', actions=[
