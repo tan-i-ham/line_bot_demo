@@ -193,21 +193,21 @@ def handle_follow_message(event):
         original_content_url= pic_url,
         preview_image_url= pic_url
     )
-    reply_arr.append(firstM)
-    reply_arr.append(secondM)
-    reply_arr.append(image_message)
-    line_bot_api.reply_message(event.reply_token , reply_arr)
-    
-    # line_bot_api.reply_message(event.reply_token,image_message)
-    # line_bot_api.reply_message(event.reply_token , TextSendMessage(text="Yes, this is me!"))
 
-    # confirm_template = ConfirmTemplate(text='Want to know more about me?', actions=[
-    #         MessageTemplateAction(label='Yes!', text='About me'),
-    #         MessageTemplateAction(label='No!', text='No'),
-    # ])
-    # template_message = TemplateSendMessage(
-    #     alt_text='Confirm alt text', template=confirm_template)
-    # line_bot_api.reply_message(event.reply_token, template_message)
+    confirm_template = ConfirmTemplate(text='Want to know more about me?', actions=[
+            MessageTemplateAction(label='Yes!', text='About me'),
+            MessageTemplateAction(label='No!', text='No'),
+    ])
+    template_message = TemplateSendMessage(
+        alt_text='Confirm alt text', template=confirm_template)
+
+    reply_arr.append(firstM)
+    reply_arr.append(image_message)
+    reply_arr.append(secondM)
+    reply_arr.append(template_message)    
+
+    line_bot_api.reply_message(event.reply_token , reply_arr)
+
     
 
 if __name__ == "__main__":
