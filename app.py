@@ -116,28 +116,22 @@ def handle_text_message(event):
 
     elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(
-                text='4/18 event', title='MSP', actions=[
+            CarouselColumn(text='4/18 event', title='MSP', actions=[
                 URITemplateAction(
                     label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
                 MessageTemplateAction(label='Scraper', text='udn news'),
-                MessageTemplateAction(label='people', text='25')
+                MessageTemplateAction(label='people?', text='25')
             ]),
-            CarouselColumn(
-                text='by Django', title='Drinkbar', actions=[
-                URITemplateAction(label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
+            CarouselColumn(text='Brand promote', title='Drinkbar', actions=[
+                URITemplateAction(
+                    label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
                 MessageTemplateAction(label='Function 1', text='Vote'),
                 MessageTemplateAction(label='Function 2', text='Drink Picker')                
-            ]),
-            CarouselColumn(
-                text='project', title='Fintech', actions=[
-                    URITemplateAction(label='Link', uri='https://msp12.herokuapp.com/new/'),
-                    MessageTemplateAction(label='Invest')
             ]),
         ])
 
         template_message = TemplateSendMessage(
-            alt_text='side project', template=carousel_template)
+            alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     elif user_text == 'ic':
