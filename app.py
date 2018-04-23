@@ -52,37 +52,6 @@ def callback():
     return 'OK'
 
 
-# @handler.add(MessageEvent, message=TextMessage)
-# def handle_message(event):
-#     # message = TextSendMessage(text=event.message.text)
-#     # line_bot_api.reply_message(
-#     #     event.reply_token,
-#     #     message)
-#     message = TemplateSendMessage(
-#         alt_text='Buttons template',
-#         template=ButtonsTemplate(
-#             thumbnail_image_url='https://example.com/image.jpg',
-#             title='Who is Yi-Han Chen?',
-#             text='Student from NTUST, Taiwan . Familiar with Python and Java',
-#             actions=[
-#                 PostbackTemplateAction(
-#                     label='postback',
-#                     text="you just sned "+k,
-#                     data='action=buy&itemid=1'
-#                 ),
-#                 MessageTemplateAction(
-#                     label='What is my side project recently?',
-#                     text='side project'
-#                 ),
-#                 URITemplateAction(
-#                     label='My Linkedin',
-#                     uri='https://www.linkedin.com/in/hannah-chen-326918101/'
-#                 )
-#             ]
-#         )
-#     )
-#     line_bot_api.reply_message(event.reply_token, message)
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     user_text = event.message.text
@@ -131,24 +100,28 @@ def handle_text_message(event):
 
     elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='4/18 event', title='MSP', actions=[
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/a/rTD2tH1',
+                text='4/18 event', title='MSP', actions=[
                 URITemplateAction(
                     label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
                 MessageTemplateAction(label='Scraper', text='udn news'),
-                MessageTemplateAction(label='people?', text='25')
+                MessageTemplateAction(label='people attend', text='25')
             ]),
-            CarouselColumn(text='Brand promote', title='Drinkbar', actions=[
+            CarouselColumn(
+                text='Develop by Django', title='Drinkbar', actions=[
                 URITemplateAction(
                     label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
                 MessageTemplateAction(label='Function 1', text='Vote'),
                 MessageTemplateAction(label='Function 2', text='Drink Picker')                
             ]),
-            # CarouselColumn(text='hoge2', title='fuga2', actions=[
-            #     PostbackTemplateAction(
-            #         label='ping with text', data='ping',
-            #         text='ping'),
-            #     MessageTemplateAction(label='Translate Rice', text='米')
-            # ]),
+            CarouselColumn(
+                thumbnail_image_url='https://imgur.com/a/sqdZnE6',
+                text='competition project', title='Fintech', actions=[
+                    URITemplateAction(
+                    label='Link', uri='https://msp12.herokuapp.com/new/'),
+                    MessageTemplateAction(label='Invest')
+            ]),
         ])
 
         template_message = TemplateSendMessage(
@@ -169,6 +142,10 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='ImageCarousel alt text', template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+
+    elif user_text=='No':
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text="Click 'Click Here !' anytime you want"))
     else:
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=user_text))
