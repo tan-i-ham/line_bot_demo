@@ -105,8 +105,8 @@ def handle_text_message(event):
                 TextMessage(text="Bot can't use profile API without user ID"))
     elif user_text == 'pic':
         image_message = ImageSendMessage(
-            original_content_url='https://via.placeholder.com/1024x1024',
-            preview_image_url='https://via.placeholder.com/1024x1024'
+            original_content_url='https://drive.google.com/file/d/0B5-xPoQ36Sb7V3czWHF1QUY5UTQ/view?usp=sharing',
+            preview_image_url='https://drive.google.com/file/d/0B5-xPoQ36Sb7V3czWHF1QUY5UTQ/view?usp=sharing'
             )
         line_bot_api.reply_message(event.reply_token,image_message)
                 
