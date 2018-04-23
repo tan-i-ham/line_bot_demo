@@ -94,24 +94,26 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+
     elif user_text== 'experience':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(
                 thumbnail_image_url='https://imgur.com/a/rTD2tH1',
-                text='@Microsoft', title='MSP', actions=[
+                text='@Micro', title='MSP', actions=[
                 MessageTemplateAction(label='Job',text='MSP main job' )
             ]),
             CarouselColumn(
-                text='@CTBC Bank', title='IT Intern', actions=[
+                text='@CTBC', title='IT Intern', actions=[
                     MessageTemplateAction(label='Testing'),
                     MessageTemplateAction(label='Spring')                
-            ]),
+            ])
 
         ])
 
         template_message = TemplateSendMessage(
             alt_text='experience', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+
     elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(
@@ -133,7 +135,7 @@ def handle_text_message(event):
                 text='project', title='Fintech', actions=[
                     URITemplateAction(label='Link', uri='https://msp12.herokuapp.com/new/'),
                     MessageTemplateAction(label='Invest')
-            ]),
+            ])
         ])
 
         template_message = TemplateSendMessage(
