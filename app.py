@@ -155,16 +155,45 @@ def handle_text_message(event):
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
+    elif text == 'ic':
+        image_carousel_template = ImageCarouselTemplate(columns=[
+            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                action=DatetimePickerTemplateAction(label='datetime',
+                                                                    data='datetime_postback',
+                                                                    mode='datetime')),
+            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                action=DatetimePickerTemplateAction(label='date',
+                                                                    data='date_postback',
+                                                                    mode='date'))
+        ])
+        template_message = TemplateSendMessage(
+            alt_text='ImageCarousel alt text', template=image_carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
     else:
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=user_text))
 
 
+@handler.add(JoinEvent)
+def handle_join(event):
+    image_message = ImageSendMessage(
+            original_content_url= pic_url,
+            preview_image_url= pic_url
+            )
+    line_bot_api.reply_message(event.reply_token,image_message)
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text='Joined this ' + event.source.type))
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text='this is me')
+
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        StickerSendMessage(
+        StickerSendMessage(g
             package_id=event.message.package_id,
             sticker_id=event.message.sticker_id)
     )
