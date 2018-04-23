@@ -104,11 +104,15 @@ def handle_text_message(event):
                 event.reply_token,
                 TextMessage(text="Bot can't use profile API without user ID"))
     elif user_text == 'pic':
-        line_bot_api.reply_message(event.reply_token,ImageMessage(image_url="img/my.jpg"))
+        image_message = ImageSendMessage(
+            original_content_url='http://res.cloudinary.com/demo/image/upload/w_250,h_250,c_fill,f_auto/seagull.jpg',
+            preview_image_url='https://example.com/preview.jpg'
+            )
+        line_bot_api.reply_message(event.reply_token,image_message)
                 
     elif user_text == 'buttons':
         buttons_template = ButtonsTemplate(
-            thumbnailImageUrl='img/my.jpg',
+            thumbnail_image_url='http://res.cloudinary.com/demo/image/upload/w_250,h_250,c_fill,f_auto/seagull.jpg',
             title='Yi-Han Chen', 
             text='Student from NTUST', 
             actions=[
