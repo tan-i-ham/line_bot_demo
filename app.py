@@ -152,24 +152,9 @@ def handle_text_message(event):
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
-    elif user_text == 'ic':
-        image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=DatetimePickerTemplateAction(label='datetime',
-                                                                    data='datetime_postback',
-                                                                    mode='datetime')),
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=DatetimePickerTemplateAction(label='date',
-                                                                    data='date_postback',
-                                                                    mode='date'))
-        ])
-        template_message = TemplateSendMessage(
-            alt_text='ImageCarousel alt text', template=image_carousel_template)
-        line_bot_api.reply_message(event.reply_token, template_message)
-
     elif user_text == 'Why':
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://www.tynker.com/blog/articles/ideas-and-tips/10-reasons-kids-should-learn-to-code/',
+            ImageCarouselColumn(image_url='https://i2.wp.com/littleboyreports.com/wp-content/uploads/2016/03/Learn-to-code-1.jpg',
                                 action= PostbackTemplateAction(label='Passion', data='Passion') ),
             ImageCarouselColumn(image_url='https://media1.tenor.com/images/b30733ad3df009f32a78ac237555f123/tenor.gif?itemid=4413385',
                                 action= PostbackTemplateAction(label='Proactive', data='Proactive')),
