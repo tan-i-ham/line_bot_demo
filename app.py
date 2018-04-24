@@ -99,7 +99,8 @@ def handle_text_message(event):
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='@Microsoft', title='MSP', actions=[
                 MessageTemplateAction(label='Main Job',text='MSP main job'),
-                MessageTemplateAction(label='Any special',text='MSP event')
+                URITemplateAction(
+                    label='MSP event', uri='https://old.accupass.com/org/detail/r/1610281115031638932479/1/0')
                 
             ]),
             CarouselColumn(text='@CTBC', title='IT Intern', actions=[
@@ -134,7 +135,7 @@ def handle_text_message(event):
         
     elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='4/18 event', title='MSP', actions=[
+            CarouselColumn(text='MSP 4/18 event', title='Voice Assistant', actions=[
                 URITemplateAction(
                     label='Github', uri='https://github.com/tp6hannah/scraper_bing_speech_api'),
                 MessageTemplateAction(label='Scraper', text='udn news'),
