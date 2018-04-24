@@ -104,10 +104,7 @@ def handle_text_message(event):
             ]),
             CarouselColumn(text='@CTBC', title='IT Intern', actions=[
                     PostbackTemplateAction(label='Testing', data='Testing'),
-                    PostbackTemplateAction(label='Spring', data='Spring')
-                    
-                    # MessageTemplateAction(label='Testing'),
-                    # MessageTemplateAction(label='Spring')                
+                    PostbackTemplateAction(label='Spring', data='Spring')            
             ]),
 
         ])
@@ -115,7 +112,25 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='experience', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif user_text == 'MSP main job':
+        msg_send = []
+        firstM = TextSendMessage(text="MSP is an abbreviation of Microsoft Student Partner!")
+        secondM = TextSendMessage(text="We have passion on technology!")
+        pic_url = 'https://imgur.com/a/wyCvneC'
+        image_message = ImageSendMessage(
+            original_content_url= pic_url,
+            preview_image_url= pic_url
+        )
+        thirdM = TextSendMessage(text="this is the evnet i held in 4/18!")
 
+        msg_send.append(firstM)
+        msg_send.append(secondM)
+        msg_send.append(pic_url)
+        msg_send.append(thirdM)
+
+        line_bot_api.reply_message(event.reply_token , msg_send)
+        
+        
     elif user_text == 'side project':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='4/18 event', title='MSP', actions=[
@@ -184,7 +199,7 @@ def handle_follow_message(event):
             MessageTemplateAction(label='No!', text='No'),
     ])
     template_message = TemplateSendMessage(
-        alt_text='Confirm alt text', template=confirm_template)
+        alt_text='Confirm', template=confirm_template)
 
     reply_arr.append(firstM)
     reply_arr.append(image_message)
