@@ -98,7 +98,7 @@ def handle_text_message(event):
     elif user_text== 'experience':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='@Microsoft', title='MSP', actions=[
-                MessageTemplateAction(label='Job',text='MSP main job'),
+                MessageTemplateAction(label='Main Job',text='MSP main job'),
                 MessageTemplateAction(label='Any special',text='MSP event')
                 
             ]),
@@ -140,11 +140,11 @@ def handle_text_message(event):
                 MessageTemplateAction(label='Scraper', text='udn news'),
                 MessageTemplateAction(label='people?', text='25')
             ]),
-            CarouselColumn(text='by Django', title='Drinkbar', actions=[
+            CarouselColumn(text='by Django', title='Portfolio', actions=[
                 URITemplateAction(
-                    label='GIF Previews', uri='https://giphy.com/gifs/drinkbar-1lvW7lrbIA3yq4gQGx'),
-                MessageTemplateAction(label='Function 1', text='Vote'),
-                MessageTemplateAction(label='Function 2', text='Drink Picker')                
+                    label='Links', uri='https://msp12.herokuapp.com/new/'),
+                PostbackTemplateAction(label='Invest', data='Invest')   
+                MessageTemplateAction(label='Platform', text='Platform')                
             ]),
         ])
 
@@ -167,6 +167,19 @@ def handle_text_message(event):
             alt_text='ImageCarousel alt text', template=image_carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
+    elif user_text == 'Why':
+        image_carousel_template = ImageCarouselTemplate(columns=[
+            ImageCarouselColumn(image_url='https://www.tynker.com/blog/articles/ideas-and-tips/10-reasons-kids-should-learn-to-code/',
+                                action= PostbackTemplateAction(label='Passion', data='Passion') ),
+            ImageCarouselColumn(image_url='https://media1.tenor.com/images/b30733ad3df009f32a78ac237555f123/tenor.gif?itemid=4413385',
+                                action= PostbackTemplateAction(label='Proactive', data='Proactive')),
+            ImageCarouselColumn(image_url='https://spunout.ie/images/made/images/articles/ThinkstockPhotos-625736338_800_440_80_c1.jpg',
+                                action= PostbackTemplateAction(label='Team-Player', data='Team-Player')),
+        ])
+        template_message = TemplateSendMessage(
+            alt_text='ImageCarousel alt text', template=image_carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+        
     elif user_text=='No':
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text="Click 'Click Here !' anytime you want"))
