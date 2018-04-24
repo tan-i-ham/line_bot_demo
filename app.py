@@ -99,7 +99,7 @@ def handle_text_message(event):
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(text='@Microsoft', title='MSP', actions=[
                 MessageTemplateAction(label='Job',text='MSP main job'),
-                MessageTemplateAction(label='Job',text='MSP main job')
+                MessageTemplateAction(label='Any special',text='MSP event')
                 
             ]),
             CarouselColumn(text='@CTBC', title='IT Intern', actions=[
@@ -115,19 +115,19 @@ def handle_text_message(event):
 
     elif user_text == "MSP main job":
         msg_send = []
-        firstM = TextSendMessage(text="MSP : Microsoft Student Partner!")
-        secondM = TextSendMessage(text="We have passion on technology!")
-        pic_url = 'https://imgur.com/a/wyCvneC'
+        firstM = TextSendMessage(text="MSP means Microsoft Student Partner")
+        secondM = TextSendMessage(text="We have passion on technology !")
+        pic_url = 'https://imgur.com/cCPeQe4.jpg'
         image_message = ImageSendMessage(
             original_content_url= pic_url,
             preview_image_url= pic_url
         )
-        # thirdM = TextSendMessage(text="this is the evnet I held at 4/18!")
+        thirdM = TextSendMessage(text="this is the evnet I held at 4/18!")
 
         msg_send.append(firstM)
         msg_send.append(secondM)
         msg_send.append(image_message)
-        # msg_send.append(thirdM)
+        msg_send.append(thirdM)
 
         line_bot_api.reply_message(event.reply_token , msg_send)
         
