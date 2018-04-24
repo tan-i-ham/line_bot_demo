@@ -114,14 +114,14 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif user_text == 'MSP main job':
         msg_send = []
-        firstM = TextSendMessage(text="MSP is an abbreviation of Microsoft Student Partner!")
+        firstM = TextSendMessage(text="MSP : Microsoft Student Partner!")
         secondM = TextSendMessage(text="We have passion on technology!")
         pic_url = 'https://imgur.com/a/wyCvneC'
         image_message = ImageSendMessage(
             original_content_url= pic_url,
             preview_image_url= pic_url
         )
-        thirdM = TextSendMessage(text="this is the evnet i held in 4/18!")
+        thirdM = TextSendMessage(text="this is the evnet I held at 4/18!")
 
         msg_send.append(firstM)
         msg_send.append(secondM)
