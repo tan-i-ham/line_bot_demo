@@ -143,8 +143,8 @@ def handle_text_message(event):
             CarouselColumn(text='by Django', title='Portfolio', actions=[
                 URITemplateAction(
                     label='Links', uri='https://msp12.herokuapp.com/new/'),
-                PostbackTemplateAction(label='Invest', data='Invest')   
-                MessageTemplateAction(label='Platform', text='Platform')                
+                PostbackTemplateAction(label='Invest', data='Invest'),
+                PostbackTemplateAction(label='Platform', data='Platform')            
             ]),
         ])
 
