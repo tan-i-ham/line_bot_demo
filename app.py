@@ -121,12 +121,12 @@ def handle_text_message(event):
             original_content_url= pic_url,
             preview_image_url= pic_url
         )
-        thirdM = TextSendMessage(text="this is the evnet I held at 4/18!")
+        # thirdM = TextSendMessage(text="this is the evnet I held at 4/18!")
 
         msg_send.append(firstM)
         msg_send.append(secondM)
         msg_send.append(pic_url)
-        msg_send.append(thirdM)
+        # msg_send.append(thirdM)
 
         line_bot_api.reply_message(event.reply_token , msg_send)
         
