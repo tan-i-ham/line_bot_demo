@@ -112,7 +112,8 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='experience', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif user_text == 'MSP main job':
+
+    elif user_text == "MSP main job":
         msg_send = []
         firstM = TextSendMessage(text="MSP : Microsoft Student Partner!")
         secondM = TextSendMessage(text="We have passion on technology!")
@@ -125,7 +126,7 @@ def handle_text_message(event):
 
         msg_send.append(firstM)
         msg_send.append(secondM)
-        msg_send.append(pic_url)
+        msg_send.append(image_message)
         # msg_send.append(thirdM)
 
         line_bot_api.reply_message(event.reply_token , msg_send)
